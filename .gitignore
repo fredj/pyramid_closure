@@ -1,1 +1,3 @@
 /.artefacts
+*.pyc
+*.egg-info
