@@ -5,7 +5,7 @@ LIBS := closure-library ol3 ngeo
 update-closure-files: .artefacts/closure-library fetch-closure-library $(addprefix pyramid_closure/closure/, $(CLOSURE_FILES))
 
 .artefacts/closure-library:
-	git clone git@github.com:google/closure-library.git .artefacts/closure-library
+	git clone git@github.com:google/closure-library.git $@
 
 .PHONY: fetch-closure-library
 fetch-closure-library:
