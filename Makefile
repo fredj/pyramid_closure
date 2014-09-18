@@ -12,6 +12,7 @@ help:
 	@echo
 	@echo "Main targets:"
 	@echo
+	@echo "- build              Build the client-side  code"
 	@echo "- install            Install the project locally"
 	@echo "- clean              Remove generated files"
 	@echo "- cleanall           Remove all the build artefacts"
@@ -19,8 +20,8 @@ help:
 	@echo "- closure-tools      Update the closure build tools"
 	@echo
 
-.PHONY: buildjs
-buildjs: pyramid_closure/static/build/build.js
+.PHONY: build
+build: pyramid_closure/static/build/build.js
 
 .PHONY: clean
 clean:
@@ -43,7 +44,7 @@ install-dev-egg: .build/venv
 	.build/venv/bin/python setup.py develop
 
 .PHONY: serve
-serve: install buildjs development.ini
+serve: install build development.ini
 	.build/venv/bin/pserve --reload development.ini
 
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
