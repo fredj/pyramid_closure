@@ -3,5 +3,6 @@
 /pyramid_closure/static/lib/ol3
 /pyramid_closure/static/lib/ngeo
 /node_modules
+/development.ini
 *.pyc
 *.egg-info

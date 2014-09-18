@@ -14,3 +14,6 @@ pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	mkdir -p $(dir $@)
 	npm install
 	touch $@
+
+development.ini: development.ini.in
+	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@
