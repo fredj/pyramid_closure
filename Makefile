@@ -50,6 +50,7 @@ pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
 pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES)
+	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
 .build/externs/angular-1.3.js:
