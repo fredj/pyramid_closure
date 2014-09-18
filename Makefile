@@ -1,5 +1,4 @@
 CLOSURE_FILES := depswriter.py source.py treescan.py
-LIBS := closure-library ol3 ngeo
 CLOSURE_UTIL_PATH := openlayers/node_modules/closure-util
 CLOSURE_LIBRARY_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getLibraryPath())')
 CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getCompilerPath())')
