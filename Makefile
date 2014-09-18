@@ -40,7 +40,7 @@ install-dev-egg: .build/venv
 	.build/venv/bin/python setup.py develop
 
 .PHONY: serve
-serve: install development.ini
+serve: install buildjs development.ini
 	.build/venv/bin/pserve --reload development.ini
 
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
