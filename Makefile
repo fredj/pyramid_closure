@@ -2,6 +2,9 @@ CLOSURE_TOOLS_FILES := depswriter.py source.py treescan.py
 CLOSURE_UTIL_PATH := openlayers/node_modules/closure-util
 CLOSURE_LIBRARY_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getLibraryPath())')
 CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getCompilerPath())')
+OL_JS_FILES = $(shell find node_modules/openlayers/src/ol -type f -name '*.js')
+NGEO_JS_FILES = $(shell find node_modules/ngeo/src -type f -name '*.js')
+APP_JS_FILES = $(shell find pyramid_closure/static/js -type f -name '*.js')
 
 .PHONY: help
 help:
@@ -46,7 +49,7 @@ serve: install buildjs development.ini
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
-pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js
+pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES)
 	node tasks/build.js $< $@
 
 .build/externs/angular-1.3.js:
