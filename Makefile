@@ -16,6 +16,9 @@ help:
 	@echo "- closure-tools      Update the closure build tools"
 	@echo
 
+.PHONY: buildjs
+buildjs: pyramid_closure/static/build/build.js
+
 .PHONY: clean
 clean:
 	rm -f .build/node_modules.timestamp
@@ -42,6 +45,14 @@ serve: install development.ini
 
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
+
+pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js
+	node tasks/build.js $< $@
+
+.build/externs/angular-1.3.js:
+	mkdir -p $(dir $@)
+	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3.js
+	touch $@
 
 .build/node_modules.timestamp:
 	mkdir -p $(dir $@)
