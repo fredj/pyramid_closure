@@ -15,14 +15,14 @@ pyramid.includes =
     pyramid_debugtoolbar
     pyramid_closure
 
-pyramid_closure.closure_library_path = {{CLOSURE_LIBRARY_PATH}}
-pyramid_closure.openlayers_library_path = %(here)s/node_modules/openlayers/src/ol
-pyramid_closure.ngeo_library_path = %(here)s/node_modules/ngeo/src
+pyramid_closure.closure_path = {{CLOSURE_LIBRARY_PATH}}
+pyramid_closure.openlayers_path = %(here)s/node_modules/openlayers
+pyramid_closure.ngeo_path = %(here)s/node_modules/ngeo
 pyramid_closure.roots =
     {{CLOSURE_LIBRARY_PATH}}/closure/goog
 pyramid_closure.roots_with_prefix =
-    ../../../ol %(here)s/node_modules/openlayers/src/ol
-    ../../../ngeo %(here)s/node_modules/ngeo/src
+    ../../../ol %(here)s/node_modules/openlayers
+    ../../../ngeo %(here)s/node_modules/ngeo
 
 # By default, the toolbar only appears for clients from IP addresses
 # '127.0.0.1' and '::1'.

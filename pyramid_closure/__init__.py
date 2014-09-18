@@ -5,11 +5,11 @@ def includeme(config):
     # add a route for the deps.js view
     config.add_route('deps.js', '/closure-deps.js', request_method='GET')
 
-    # get file system paths to closure, openlayers and ngeo
+    # get file system paths to closure, openlayers and ngeo from settings
     settings = config.get_settings()
-    closure_path = settings.get('pyramid_closure.closure_library_path')
-    openlayers_path = settings.get('pyramid_closure.openlayers_library_path')
-    ngeo_path = settings.get('pyramid_closure.ngeo_library_path')
+    closure_path = settings.get('pyramid_closure.closure_path')
+    openlayers_path = settings.get('pyramid_closure.openlayers_path')
+    ngeo_path = settings.get('pyramid_closure.ngeo_path')
 
     # add static views for closure, openlayers and ngeo
     config.add_static_view('closure', closure_path, cache_max_age=3600)
