@@ -21,7 +21,7 @@
       "goog.DEBUG=false"
     ],
     "js": [
-      "pyramid_closure/static/simple.js",
+      "pyramid_closure/static/js/simple.js",
       "node_modules/openlayers/externs/olx.js"
     ],
     "jscomp_error": [
