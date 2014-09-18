@@ -1,7 +1,5 @@
 /.build
-/pyramid_closure/static/lib/closure-library
-/pyramid_closure/static/lib/ol3
-/pyramid_closure/static/lib/ngeo
+/pyramid_closure/static/build
 /node_modules
 /development.ini
 *.pyc
