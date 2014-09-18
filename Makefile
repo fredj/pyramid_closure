@@ -40,8 +40,7 @@ closure-tools: .build/node_modules.timestamp $(addprefix pyramid_closure/closure
 install: install-dev-egg .build/node_modules.timestamp
 
 .PHONY: install-dev-egg
-install-dev-egg: .build/venv
-	.build/venv/bin/python setup.py develop
+install-dev-egg: .build/venv/lib/python2.7/site-packages/pyramid-closure.egg-link
 
 .PHONY: serve
 serve: install build development.ini
@@ -66,7 +65,10 @@ pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js 
 
 .build/venv:
 	mkdir -p $(dir $@)
-	virtualenv --no-site-packages .build/venv
+	virtualenv --no-site-packages $@
+
+.build/venv/lib/python2.7/site-packages/pyramid-closure.egg-link: .build/venv
+	.build/venv/bin/python setup.py develop
 
 development.ini: development.ini.in
 	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@
