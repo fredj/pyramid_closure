@@ -7,6 +7,10 @@ CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE
 .PHONY: closure-tools
 closure-tools: .artefacts/node_modules.timestamp $(addprefix pyramid_closure/closure/, $(CLOSURE_FILES))
 
+.PHONY: serve
+serve: development.ini
+	pserve --reload development.ini
+
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
