@@ -18,31 +18,39 @@ help:
 
 .PHONY: clean
 clean:
-	rm -f .artefacts/node_modules.timestamp
+	rm -f .build/node_modules.timestamp
 	rm -f development.ini
 
 .PHONY: cleanall
 cleanall: clean
-	rm -rf .artefacts
+	rm -rf .build
 	rm -rf node_modules
 
 .PHONY: closure-tools
-closure-tools: .artefacts/node_modules.timestamp $(addprefix pyramid_closure/closure/, $(CLOSURE_TOOLS_FILES))
+closure-tools: .build/node_modules.timestamp $(addprefix pyramid_closure/closure/, $(CLOSURE_TOOLS_FILES))
 
 .PHONY: install
-install: .artefacts/node_modules.timestamp
+install: install-dev-egg .build/node_modules.timestamp
+
+.PHONY: install-dev-egg
+install-dev-egg: .build/venv
+	.build/venv/bin/python setup.py develop
 
 .PHONY: serve
-serve: development.ini
-	pserve --reload development.ini
+serve: install development.ini
+	.build/venv/bin/pserve --reload development.ini
 
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
-.artefacts/node_modules.timestamp:
+.build/node_modules.timestamp:
 	mkdir -p $(dir $@)
 	npm install
 	touch $@
+
+.build/venv:
+	mkdir -p $(dir $@)
+	virtualenv --no-site-packages .build/venv
 
 development.ini: development.ini.in
 	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@
