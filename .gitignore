@@ -2,5 +2,6 @@
 /pyramid_closure/static/lib/closure-library
 /pyramid_closure/static/lib/ol3
 /pyramid_closure/static/lib/ngeo
+/node_modules
 *.pyc
 *.egg-info
