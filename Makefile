@@ -65,3 +65,6 @@ pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js
 
 development.ini: development.ini.in
 	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@
+
+production.ini: production.ini.in
+	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@

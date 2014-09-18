@@ -15,11 +15,14 @@ pyramid.includes =
     pyramid_closure
 
 # pyramid_closure configuration
+pyramid_closure.closure_library_path = {{CLOSURE_LIBRARY_PATH}}
+pyramid_closure.openlayers_library_path = %(here)s/node_modules/openlayers/src/ol
+pyramid_closure.ngeo_library_path = %(here)s/node_modules/ngeo/src
 pyramid_closure.roots =
-    %(here)s/pyramid_closure/static/lib/closure-library/closure/goog
+    {{CLOSURE_LIBRARY_PATH}}/closure/goog
 pyramid_closure.roots_with_prefix =
-    ../../../ol3/src/ol %(here)s/pyramid_closure/static/lib/ol3/src/ol
-    ../../../ngeo/src %(here)s/pyramid_closure/static/lib/ngeo/src
+    ../../../ol %(here)s/node_modules/openlayers/src/ol
+    ../../../ngeo %(here)s/node_modules/ngeo/src
 
 ###
 # wsgi server configuration
