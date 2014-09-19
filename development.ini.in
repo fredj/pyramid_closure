@@ -14,6 +14,7 @@ pyramid.default_locale_name = en
 pyramid.includes =
     pyramid_debugtoolbar
     pyramid_closure
+    pyramid_mako
 
 pyramid_closure.closure_path = {{CLOSURE_LIBRARY_PATH}}
 pyramid_closure.openlayers_path = %(here)s/node_modules/openlayers
