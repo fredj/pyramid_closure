@@ -28,6 +28,7 @@ clean:
 	rm -f .build/node_modules.timestamp
 	rm -f development.ini
 	rm -f production.ini
+	rm -rf pyramid_closure/static/build
 
 .PHONY: cleanall
 cleanall: clean
