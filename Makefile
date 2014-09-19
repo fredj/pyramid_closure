@@ -68,7 +68,7 @@ pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js 
 	mkdir -p $(dir $@)
 	virtualenv --no-site-packages $@
 
-.build/venv/lib/python2.7/site-packages/pyramid-closure.egg-link: .build/venv
+.build/venv/lib/python2.7/site-packages/pyramid-closure.egg-link: .build/venv setup.py
 	.build/venv/bin/python setup.py develop
 
 development.ini: development.ini.in
