@@ -59,7 +59,7 @@ pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js 
 	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3.js
 	touch $@
 
-.build/node_modules.timestamp:
+.build/node_modules.timestamp: package.json
 	mkdir -p $(dir $@)
 	npm install
 	touch $@
