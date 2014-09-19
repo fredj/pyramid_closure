@@ -54,6 +54,10 @@ pyramid_closure/static/build/build.js: build.json .build/externs/angular-1.3.js 
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
+pyramid_closure/static/build/build.css: node_modules/openlayers/css/ol.css .build/node_modules.timestamp
+	mkdir -p $(dir $@)
+	./node_modules/.bin/cleancss $< > $@
+
 .build/externs/angular-1.3.js:
 	mkdir -p $(dir $@)
 	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3.js

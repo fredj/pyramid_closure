@@ -10,6 +10,7 @@
   "devDependencies": {
     "openlayers": "openlayers/ol3#master",
     "ngeo": "camptocamp/ngeo#master",
+    "clean-css": "^2.2.7",
     "fs-extra": "~0.8.1",
     "jsdoc": "~3.3.0-alpha7",
     "nomnom": "~1.6.2",
