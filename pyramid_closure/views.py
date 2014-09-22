@@ -27,9 +27,3 @@ def depsjs(request):
     request.response.content_type = 'text/javascript'
 
     return depswriter.MakeDepsFile(path_to_source)
-
-
-@view_config(route_name='index',
-             renderer='pyramid_closure:templates/index.mako')
-def index(request):
-    return {'debug': 'debug' in request.params}
