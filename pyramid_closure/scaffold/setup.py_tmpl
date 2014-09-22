@@ -38,6 +38,6 @@ setup(name='{{project}}',
       test_suite="pyramid_closure",
       entry_points="""\
       [paste.app_factory]
-      main = pyramid_closure:main
+      main = {{package}}:main
       """,
       )
