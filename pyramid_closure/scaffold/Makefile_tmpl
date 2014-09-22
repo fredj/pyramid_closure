@@ -11,8 +11,7 @@ help:
 	@echo
 	@echo "Main targets:"
 	@echo
-	@echo "- build              Build the client-side code"
-	@echo "- install            Install the project locally"
+	@echo "- install            Install and build the project"
 	@echo "- clean              Remove generated files"
 	@echo "- cleanall           Remove all the build artefacts"
 	@echo "- serve              Run the development server (pserve)"
@@ -34,7 +33,7 @@ cleanall: clean
 	rm -rf node_modules
 
 .PHONY: install
-install: install-dev-egg .build/node_modules.timestamp
+install: build install-dev-egg .build/node_modules.timestamp
 
 .PHONY: install-dev-egg
 install-dev-egg: .build/venv/lib/python2.7/site-packages/{{project}}.egg-link
