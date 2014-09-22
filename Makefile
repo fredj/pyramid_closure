@@ -21,7 +21,7 @@ help:
 	@echo
 
 .PHONY: build
-build: pyramid_closure/static/build/build.js
+build: pyramid_closure/static/build/build.js pyramid_closure/static/build/build.css
 
 .PHONY: clean
 clean:
