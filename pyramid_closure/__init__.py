@@ -1,4 +1,3 @@
-from pyramid.config import Configurator
 from pyramid.scaffolds import PyramidTemplate
 
 
@@ -21,13 +20,3 @@ def includeme(config):
     config.add_static_view('closure', closure_path, cache_max_age=3600)
     config.add_static_view('ol', openlayers_path, cache_max_age=3600)
     config.add_static_view('ngeo', ngeo_path, cache_max_age=3600)
-
-
-def main(global_config, **settings):
-    """ This function returns a Pyramid WSGI application.
-    """
-    config = Configurator(settings=settings)
-    config.add_static_view('static', 'static', cache_max_age=3600)
-    config.add_route('index', '/')
-    config.scan()
-    return config.make_wsgi_app()

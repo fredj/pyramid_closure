@@ -9,10 +9,7 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
 
 requires = [
-    'pyramid',
-    'pyramid_debugtoolbar',
-    'pyramid_mako',
-    'waitress',
+    'pyramid'
     ]
 
 setup(name='pyramid_closure',
@@ -36,9 +33,6 @@ setup(name='pyramid_closure',
       tests_require=requires,
       test_suite="pyramid_closure",
       entry_points={
-          "paste.app_factory": [
-              "main = pyramid_closure:main"
-          ],
           "pyramid.scaffold": [
               "pyramid_closure = pyramid_closure:Template"
           ]

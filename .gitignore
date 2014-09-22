@@ -1,6 +1,3 @@
 /.build
-/pyramid_closure/static/build
-/node_modules
-/development.ini
 *.pyc
 *.egg-info
