@@ -7,7 +7,9 @@ class Template(PyramidTemplate):
 
 
 def includeme(config):
-    # add a route for the deps.js view
+    # add a view and a route for the Closure deps file
+    config.add_view('pyramid_closure.views:depsjs', route_name='deps.js',
+                    renderer='string')
     config.add_route('deps.js', '/closure-deps.js', request_method='GET')
 
     # get file system paths to closure, openlayers and ngeo from settings

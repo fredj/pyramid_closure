@@ -1,6 +1,5 @@
 from itertools import izip
 
-from pyramid.view import view_config
 from pyramid.settings import aslist
 
 from .closure import depswriter
@@ -11,7 +10,6 @@ def pairwise(iterable):
     return izip(a, a)
 
 
-@view_config(route_name='deps.js', renderer='string')
 def depsjs(request):
     path_to_source = {}
 
