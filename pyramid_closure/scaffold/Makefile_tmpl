@@ -1,3 +1,4 @@
+SITE_PACKAGES = $(shell .build/venv/bin/python -c "import distutils; print(distutils.sysconfig.get_python_lib())" 2> /dev/null)
 CLOSURE_UTIL_PATH := openlayers/node_modules/closure-util
 CLOSURE_LIBRARY_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getLibraryPath())' 2> /dev/null)
 CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getCompilerPath())' 2> /dev/null)
@@ -36,7 +37,7 @@ cleanall: clean
 install: build install-dev-egg .build/node_modules.timestamp
 
 .PHONY: install-dev-egg
-install-dev-egg: .build/venv/lib/python2.7/site-packages/{{project}}.egg-link
+install-dev-egg: $(SITE_PACKAGES)/{{project}}.egg-link
 
 .PHONY: serve
 serve: install build development.ini
@@ -67,7 +68,7 @@ serve: install build development.ini
 	mkdir -p $(dir $@)
 	virtualenv --no-site-packages $@
 
-.build/venv/lib/python2.7/site-packages/{{project}}.egg-link: .build/venv setup.py
+$(SITE PACKAGES)/{{project}}.egg-link: .build/venv setup.py
 	(cd ../pyramid_closure && ../{{project}}/.build/venv/bin/python setup.py develop)
 	.build/venv/bin/python setup.py develop
 

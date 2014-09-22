@@ -1,3 +1,4 @@
+SITE_PACKAGES = $(shell .build/venv/bin/python -c "import distutils; print(distutils.sysconfig.get_python_lib())" 2> /dev/null)
 CLOSURE_TOOLS_FILES := depswriter.py source.py treescan.py
 
 .PHONY: help
@@ -22,7 +23,7 @@ closure-tools: .build/node_modules.timestamp $(addprefix pyramid_closure/closure
 install: install-dev-egg
 
 .PHONY: install-dev-egg
-install-dev-egg: .build/venv/lib/python2.7/site-packages/pyramid-closure.egg-link
+install-dev-egg: $(SITE_PACKAGES)/pyramid-closure.egg-link
 
 pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
@@ -31,5 +32,5 @@ pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	mkdir -p $(dir $@)
 	virtualenv --no-site-packages $@
 
-.build/venv/lib/python2.7/site-packages/pyramid-closure.egg-link: .build/venv setup.py
+$(SITE_PACKAGES)/pyramid-closure.egg-link: .build/venv setup.py
 	.build/venv/bin/python setup.py develop
