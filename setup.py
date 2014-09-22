@@ -35,8 +35,12 @@ setup(name='pyramid_closure',
       install_requires=requires,
       tests_require=requires,
       test_suite="pyramid_closure",
-      entry_points="""\
-      [paste.app_factory]
-      main = pyramid_closure:main
-      """,
+      entry_points={
+          "paste.app_factory": [
+              "main = pyramid_closure:main"
+          ],
+          "pyramid.scaffold": [
+              "pyramid_closure = pyramid_closure:Template"
+          ]
+      },
       )

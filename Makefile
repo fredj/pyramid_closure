@@ -77,7 +77,7 @@ pyramid_closure/static/build/build.css: node_modules/openlayers/css/ol.css .buil
 	.build/venv/bin/python setup.py develop
 
 development.ini: development.ini.in
-	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@
+	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|' $< > $@
 
 production.ini: production.ini.in
-	sed 's|{{CLOSURE_LIBRARY_PATH}}|$(CLOSURE_LIBRARY_PATH)|' $< > $@
+	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|' $< > $@

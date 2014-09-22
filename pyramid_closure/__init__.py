@@ -1,4 +1,10 @@
 from pyramid.config import Configurator
+from pyramid.scaffolds import PyramidTemplate
+
+
+class Template(PyramidTemplate):
+    _template_dir = 'scaffold'
+    summary = 'Template to use to create a Closure project'
 
 
 def includeme(config):
