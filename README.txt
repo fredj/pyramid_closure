@@ -11,7 +11,7 @@ Create a project:
 
 ```
 $ cd ..
-$ .build/venv/pcreate -s pyramid_closure ProjectName
+$ pyramid_closure/.build/venv/pcreate -s pyramid_closure ProjectName
 ```
 
 Install and build project:
