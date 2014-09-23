@@ -7,7 +7,7 @@
           content="initial-scale=1.0, user-scalable=no, width=device-width">
     <meta name="apple-mobile-web-app-capable" content="yes">
 % if debug:
-    <link rel="stylesheet" href="/ol/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="/static/build/build-debug.css" type="text/css">
 % else:
     <link rel="stylesheet" href="/static/build/build.css" type="text/css">
 % endif
