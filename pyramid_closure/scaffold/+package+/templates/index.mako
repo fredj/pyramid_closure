@@ -20,7 +20,7 @@
   </head>
   <body ng-controller="MainController">
     <div id="map" go-map></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
 % if debug:
     <script src="/closure/closure/goog/base.js"></script>
     <script src="/closure-deps.js"></script>
