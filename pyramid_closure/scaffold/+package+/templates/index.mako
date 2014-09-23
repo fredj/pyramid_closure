@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/static/build/build.css" type="text/css">
 % endif
     <style>
-      #map > div {
+      #map {
         width: 600px;
         height: 400px;
       }
