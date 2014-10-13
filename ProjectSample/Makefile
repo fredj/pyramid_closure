@@ -73,7 +73,7 @@ projectsample/static/build/build-debug.css: less/projectsample.less .build/node_
 	virtualenv --no-site-packages $@
 
 $(SITE PACKAGES)/ProjectSample.egg-link: .build/venv setup.py
-	(cd ../pyramid_closure && ../ProjectSample/.build/venv/bin/python setup.py develop)
+	(cd .. && ./ProjectSample/.build/venv/bin/python setup.py develop)
 	.build/venv/bin/python setup.py develop
 
 development.ini: development.ini.in
