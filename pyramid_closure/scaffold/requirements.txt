@@ -1,0 +1,3 @@
+--index-url http://pypi.camptocamp.net/pypi
+-e git+https://github.com/elemoine/pyramid_closure#egg=pyramid_closure
+-e .
