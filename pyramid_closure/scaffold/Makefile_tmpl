@@ -46,7 +46,7 @@ serve: install build development.ini
 {{package}}/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
-{{package}}/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/node_modules.timestamp
+{{package}}/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
@@ -61,6 +61,11 @@ serve: install build development.ini
 .build/externs/angular-1.3.js:
 	mkdir -p $(dir $@)
 	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3.js
+	touch $@
+
+.build/externs/angular-1.3-q.js:
+	mkdir -p $(dir $@)
+	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3-q.js
 	touch $@
 
 .build/node_modules.timestamp: package.json
