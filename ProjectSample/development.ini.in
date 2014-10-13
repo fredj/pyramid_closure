@@ -4,26 +4,30 @@
 ###
 
 [app:main]
-use = egg:{{project}}
+use = egg:ProjectSample
 
-pyramid.reload_templates = false
+pyramid.reload_templates = true
 pyramid.debug_authorization = false
 pyramid.debug_notfound = false
 pyramid.debug_routematch = false
 pyramid.default_locale_name = en
 pyramid.includes =
+    pyramid_debugtoolbar
     pyramid_closure
-    pyramid mako
+    pyramid_mako
 
-# pyramid_closure configuration
-pyramid_closure.closure_library_path = __CLOSURE_LIBRARY_PATH__
-pyramid_closure.openlayers_library_path = %(here)s/node_modules/ol
-pyramid_closure.ngeo_library_path = %(here)s/node_modules/ngeo
+pyramid_closure.closure_path = __CLOSURE_LIBRARY_PATH__
+pyramid_closure.openlayers_path = %(here)s/node_modules/ol
+pyramid_closure.ngeo_path = %(here)s/node_modules/ngeo
 pyramid_closure.roots =
     __CLOSURE_LIBRARY_PATH__/closure/goog
 pyramid_closure.roots_with_prefix =
     ../../../ol %(here)s/node_modules/ol
     ../../../ngeo %(here)s/node_modules/ngeo
+
+# By default, the toolbar only appears for clients from IP addresses
+# '127.0.0.1' and '::1'.
+# debugtoolbar.hosts = 127.0.0.1 ::1
 
 ###
 # wsgi server configuration
@@ -40,7 +44,7 @@ port = 6543
 ###
 
 [loggers]
-keys = root, {{package_logger}}
+keys = root, projectsample
 
 [handlers]
 keys = console
@@ -49,13 +53,13 @@ keys = console
 keys = generic
 
 [logger_root]
-level = WARN
+level = INFO
 handlers = console
 
-[logger_{{package_logger}}]
-level = WARN
+[logger_projectsample]
+level = DEBUG
 handlers =
-qualname = {{package}}
+qualname = projectsample
 
 [handler_console]
 class = StreamHandler

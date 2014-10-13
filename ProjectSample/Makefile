@@ -4,7 +4,7 @@ CLOSURE_LIBRARY_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_
 CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE_UTIL_PATH)").getCompilerPath())' 2> /dev/null)
 OL_JS_FILES = $(shell find node_modules/ol/src/ol -type f -name '*.js' 2> /dev/null)
 NGEO_JS_FILES = $(shell find node_modules/ngeo/src -type f -name '*.js' 2> /dev/null)
-APP_JS_FILES = $(shell find {{package}}/static/js -type f -name '*.js')
+APP_JS_FILES = $(shell find projectsample/static/js -type f -name '*.js')
 
 .PHONY: help
 help:
@@ -19,14 +19,14 @@ help:
 	@echo
 
 .PHONY: build
-build: {{package}}/static/build/build.js {{package}}/static/build/build.css {{package}}/static/build/build-debug.css
+build: projectsample/static/build/build.js projectsample/static/build/build.css projectsample/static/build/build-debug.css
 
 .PHONY: clean
 clean:
 	rm -f .build/node_modules.timestamp
 	rm -f development.ini
 	rm -f production.ini
-	rm -rf {{package}}/static/build
+	rm -rf projectsample/static/build
 
 .PHONY: cleanall
 cleanall: clean
@@ -37,24 +37,24 @@ cleanall: clean
 install: build install-dev-egg .build/node_modules.timestamp
 
 .PHONY: install-dev-egg
-install-dev-egg: $(SITE_PACKAGES)/{{project}}.egg-link
+install-dev-egg: $(SITE_PACKAGES)/ProjectSample.egg-link
 
 .PHONY: serve
 serve: install build development.ini
 	.build/venv/bin/pserve --reload development.ini
 
-{{package}}/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
+projectsample/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
-{{package}}/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/node_modules.timestamp
+projectsample/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
-{{package}}/static/build/build.css: less/{{package}}.less .build/node_modules.timestamp
+projectsample/static/build/build.css: less/projectsample.less .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	./node_modules/.bin/lessc --clean-css $< > $@
 
-{{package}}/static/build/build-debug.css: less/{{package}}.less .build/node_modules.timestamp
+projectsample/static/build/build-debug.css: less/projectsample.less .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	./node_modules/.bin/lessc $< > $@
 
@@ -77,7 +77,7 @@ serve: install build development.ini
 	mkdir -p $(dir $@)
 	virtualenv --no-site-packages $@
 
-$(SITE PACKAGES)/{{project}}.egg-link: .build/venv setup.py
+$(SITE PACKAGES)/ProjectSample.egg-link: .build/venv setup.py
 	.build/venv/bin/pip install -r requirements.txt
 
 development.ini: development.ini.in

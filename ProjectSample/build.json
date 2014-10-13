@@ -24,7 +24,7 @@
       "ol.ENABLE_WEBGL=false"
     ],
     "js": [
-      "{{package}}/static/js/simple.js",
+      "projectsample/static/js/simple.js",
       "node_modules/ol/externs/olx.js",
       "node_modules/ol/externs/oli.js"
     ],

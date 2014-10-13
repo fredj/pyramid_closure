@@ -86,7 +86,7 @@ function writeExports(exports, callback) {
       callback(err);
       return;
     }
-    log.verbose('{{project}}', 'Writing exports: ' + info.path);
+    log.verbose('ProjectSample', 'Writing exports: ' + info.path);
     fs.writeFile(info.path, exports, function(err) {
       if (err) {
         callback(err);
@@ -117,7 +117,7 @@ function getDependencies(config, exports, callback) {
       callback(err);
       return;
     }
-    log.info('{{project}}', 'Parsing dependencies');
+    log.info('ProjectSample', 'Parsing dependencies');
     var options;
     if (config.src) {
       options = {
@@ -175,11 +175,11 @@ function build(config, paths, callback) {
     jvm: config.jvm
   };
   if (!options.compile) {
-    log.info('{{project}}', 'No compile options found.  Concatenating ' +
+    log.info('ProjectSample', 'No compile options found.  Concatenating ' +
         paths.length + ' sources');
     concatenate(paths, callback);
   } else {
-    log.info('{{project}}', 'Compiling ' + paths.length + ' sources');
+    log.info('ProjectSample', 'Compiling ' + paths.length + ' sources');
     options.compile.js = paths.concat(options.compile.js || []);
     closure.compile(options, callback);
   }
