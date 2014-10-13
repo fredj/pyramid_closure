@@ -33,4 +33,4 @@ pyramid_closure/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	virtualenv --no-site-packages $@
 
 $(SITE_PACKAGES)/pyramid-closure.egg-link: .build/venv setup.py
-	.build/venv/bin/python setup.py develop
+	.build/venv/bin/pip install -r requirements.txt
