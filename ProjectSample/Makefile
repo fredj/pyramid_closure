@@ -78,8 +78,7 @@ projectsample/static/build/build-debug.css: less/projectsample.less .build/node_
 	virtualenv --no-site-packages $@
 
 $(SITE PACKAGES)/ProjectSample.egg-link: .build/venv setup.py
-	(cd .. && ./ProjectSample/.build/venv/bin/python setup.py develop)
-	.build/venv/bin/python setup.py develop
+	.build/venv/bin/pip install -r requirements.txt
 
 development.ini: development.ini.in
 	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|' $< > $@
