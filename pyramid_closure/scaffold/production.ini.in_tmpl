@@ -13,12 +13,12 @@ pyramid.debug_routematch = false
 pyramid.default_locale_name = en
 pyramid.includes =
     pyramid_closure
-    pyramid mako
+    pyramid_mako
 
 # pyramid_closure configuration
-pyramid_closure.closure_library_path = __CLOSURE_LIBRARY_PATH__
-pyramid_closure.openlayers_library_path = %(here)s/node_modules/ol
-pyramid_closure.ngeo_library_path = %(here)s/node_modules/ngeo
+pyramid_closure.closure_path = __CLOSURE_LIBRARY_PATH__
+pyramid_closure.openlayers_path = %(here)s/node_modules/ol
+pyramid_closure.ngeo_path = %(here)s/node_modules/ngeo
 pyramid_closure.roots =
     __CLOSURE_LIBRARY_PATH__/closure/goog
 pyramid_closure.roots_with_prefix =
