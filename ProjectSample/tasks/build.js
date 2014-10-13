@@ -4,9 +4,9 @@
 var path = require('path');
 
 var async = require('async');
-var closure = require('openlayers/node_modules/closure-util');
+var closure = require('ol/node_modules/closure-util');
 var fse = require('fs-extra');
-var fs = require('openlayers/node_modules/graceful-fs');
+var fs = require('ol/node_modules/graceful-fs');
 var nomnom = require('nomnom');
 var temp = require('temp').track();
 
