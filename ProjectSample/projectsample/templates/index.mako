@@ -11,12 +11,6 @@
 % else:
     <link rel="stylesheet" href="/static/build/build.css" type="text/css">
 % endif
-    <style>
-      #map {
-        width: 600px;
-        height: 400px;
-      }
-    </style>
   </head>
   <body ng-controller="MainController">
     <div id="map" go-map></div>
