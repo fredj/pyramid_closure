@@ -2,7 +2,7 @@
   "exports": ["*"],
   "src": ["node_modules/ol/src/**/*.js", "node_modules/ngeo/src/**/*.js"],
   "compile": {
-    "closure_entry_point": "simple",
+    "closure_entry_point": "main",
     "externs": [
       "node_modules/ol/externs/bingmaps.js",
       "node_modules/ol/externs/closure-compiler.js",
@@ -24,7 +24,7 @@
       "ol.ENABLE_WEBGL=false"
     ],
     "js": [
-      "projectsample/static/js/simple.js",
+      "projectsample/static/js/main.js",
       "node_modules/ol/externs/olx.js",
       "node_modules/ol/externs/oli.js"
     ],

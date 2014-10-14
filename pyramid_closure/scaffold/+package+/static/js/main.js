@@ -1,4 +1,4 @@
-goog.provide('simple');
+goog.provide('main');
 
 goog.require('go_map_directive');
 goog.require('ol.Map');
