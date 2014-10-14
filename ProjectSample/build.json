@@ -67,7 +67,7 @@
     "extra_annotation_name": [
       "api", "observable"
     ],
-    "compilation_level": "ADVANCED_OPTIMIZATIONS",
+    "compilation_level": "ADVANCED",
     "output_wrapper": "(function(){%output%})();",
     "use_types_for_optimization": true
   }
