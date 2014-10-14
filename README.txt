@@ -4,6 +4,7 @@ Install:
 
 ```
 $ git clone https://github.com/elemoine/pyramid_closure.git
+$ cd pyramid_closure
 $ make install
 ```
 
