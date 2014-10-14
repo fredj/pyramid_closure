@@ -21,12 +21,12 @@
   <body ng-controller="MainController">
     <div id="map" go-map></div>
 % if debug:
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>
     <script src="/closure/closure/goog/base.js"></script>
     <script src="/closure-deps.js"></script>
     <script src="/static/js/simple.js"></script>
 % else:
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
     <script src="/static/build/build.js"></script>
 % endif
   </body>
