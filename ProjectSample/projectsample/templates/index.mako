@@ -18,7 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>
     <script src="/closure/closure/goog/base.js"></script>
     <script src="/closure-deps.js"></script>
-    <script src="/static/js/simple.js"></script>
+    <script src="/static/js/main.js"></script>
 % else:
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
     <script src="/static/build/build.js"></script>
