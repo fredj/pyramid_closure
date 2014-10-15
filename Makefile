@@ -12,6 +12,7 @@ help:
 	@echo "- cleanall           Remove all the build artefacts"
 	@echo "- closure-tools      Update the closure build tools"
 	@echo "- flake8             Run flake8 checker on the Python code"
+	@echo "- readme             Generate README.txt from README.md (requires pandoc)"
 	@echo
 
 .PHONY: check
@@ -34,6 +35,12 @@ install: install-dev-egg
 
 .PHONY: install-dev-egg
 install-dev-egg: $(SITE_PACKAGES)/pyramid-closure.egg-link
+
+.PHONY: readme
+readme: README.txt
+
+README.txt: README.md
+	pandoc --from=markdown --to=rst $< -o $@
 
 pyramid_closure/closure/%.py: .build/closure-library-master/closure/bin/build/%.py
 	cp $< $@
