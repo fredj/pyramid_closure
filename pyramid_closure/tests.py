@@ -4,10 +4,10 @@ from pyramid import testing
 
 
 class ViewTests(unittest.TestCase):
-    def setUp(self):
+    def setUp(self):  # noqa
         self.config = testing.setUp()
 
-    def tearDown(self):
+    def tearDown(self):  # noqa
         testing.tearDown()
 
     def test_my_view(self):
