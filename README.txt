@@ -1,29 +1,36 @@
-pyramid_closure
+pyramid\_closure
+================
+
+The ``pyramid_closure`` package provides helpers for working with
+Google's `Closure Tools <https://developers.google.com/closure>`__ in a
+Pyramid application.
 
 Install:
 
-```
-$ git clone https://github.com/camptocamp/pyramid_closure.git
-$ cd pyramid_closure
-$ make install
-```
+.. code:: shell
 
-Create a project:
+    $ git clone https://github.com/camptocamp/pyramid_closure.git
+    $ cd pyramid_closure
+    $ make install
 
-```
-$ cd ..
-$ pyramid_closure/.build/venv/bin/pcreate -s pyramid_closure ProjectName
-```
+Create a project based on the ``pyramid_closure`` scaffold:
+
+.. code:: shell
+
+    $ cd ..
+    $ pyramid_closure/.build/venv/bin/pcreate -s pyramid_closure ProjectName
 
 Install and build project:
 
-```
-$ cd ProjectName
-$ make install
-```
+.. code:: shell
+
+    $ cd ProjectName
+    $ make install
 
 Start development server:
 
-```
-$ make serve
-```
+.. code:: shell
+
+    $ make serve
+
+Use ``make help`` for a list of possible targets.
