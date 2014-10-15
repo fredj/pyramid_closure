@@ -12,11 +12,17 @@ help:
 	@echo
 	@echo "Main targets:"
 	@echo
-	@echo "- install            Install and build the project"
+	@echo "- check              Perform a number of checks on the code"
 	@echo "- clean              Remove generated files"
 	@echo "- cleanall           Remove all the build artefacts"
+	@echo "- flake8             Run flake8 checker on the Python code"
+	@echo "- install            Install and build the project"
+	@echo "- lint               Check the JavaScript code with linters"
 	@echo "- serve              Run the development server (pserve)"
 	@echo
+
+.PHONY: check
+check: flake8 lint build
 
 .PHONY: build
 build: {{package}}/static/build/build.js {{package}}/static/build/build.css {{package}}/static/build/build-debug.css
@@ -24,6 +30,7 @@ build: {{package}}/static/build/build.js {{package}}/static/build/build.css {{pa
 .PHONY: clean
 clean:
 	rm -f .build/node_modules.timestamp
+	rm -f .build/dev-requirements.timestamp
 	rm -f development.ini
 	rm -f production.ini
 	rm -rf {{package}}/static/build
@@ -33,8 +40,15 @@ cleanall: clean
 	rm -rf .build
 	rm -rf node_modules
 
+.PHONY: flake8
+flake8: .build/venv/bin/flake8
+	.build/venv/bin/flake8 {{package}}
+
 .PHONY: install
 install: build install-dev-egg .build/node_modules.timestamp
+
+.PHONY: lint
+lint: .build/venv/bin/gjslint .build/node_modules.timestamp .build/gjslint.timestamp .build/jshint.timestamp
 
 .PHONY: install-dev-egg
 install-dev-egg: $(SITE_PACKAGES)/{{project}}.egg-link
@@ -71,6 +85,22 @@ serve: install build development.ini
 .build/node_modules.timestamp: package.json
 	mkdir -p $(dir $@)
 	npm install
+	touch $@
+
+.build/gjslint.timestamp: $(APP_JS_FILES)
+	.build/venv/bin/gjslint --jslint_error=all --strict --custom_jsdoc_tags=event,fires,function,classdesc,api,observable $?
+	touch $@
+
+.build/jshint.timestamp: $(APP_JS_FILES)
+	./node_modules/.bin/jshint --verbose $?
+	touch $@
+
+.build/venv/bin/gjslint: .build/dev-requirements.timestamp
+
+.build/venv/bin/flake8: .build/dev-requirements.timestamp
+
+.build/dev-requirements.timestamp: .build/venv
+	.build/venv/bin/pip install -r dev-requirements.txt > /dev/null 2>&1
 	touch $@
 
 .build/venv:
