@@ -1,12 +1,14 @@
 {
   "exports": ["*"],
-  "src": ["node_modules/ol/src/**/*.js", "node_modules/ngeo/src/**/*.js"],
+  "src": [
+    "node_modules/ol/src/**/*.js",
+    "node_modules/ngeo/src/**/*.js"
+  ],
   "compile": {
     "closure_entry_point": "main",
     "externs": [
       "node_modules/ol/externs/bingmaps.js",
       "node_modules/ol/externs/closure-compiler.js",
-      "node_modules/ol/externs/example.js",
       "node_modules/ol/externs/geojson.js",
       "node_modules/ol/externs/proj4js.js",
       "node_modules/ol/externs/tilejson.js",
