@@ -16,14 +16,15 @@ pyramid.includes =
     pyramid_mako
 
 # pyramid_closure configuration
-pyramid_closure.closure_path = __CLOSURE_LIBRARY_PATH__
-pyramid_closure.openlayers_path = %(here)s/node_modules/ol
-pyramid_closure.ngeo_path = %(here)s/node_modules/ngeo
 pyramid_closure.roots =
     __CLOSURE_LIBRARY_PATH__/closure/goog
 pyramid_closure.roots_with_prefix =
-    ../../../ol %(here)s/node_modules/ol
-    ../../../ngeo %(here)s/node_modules/ngeo
+    ../../node_modules/ol %(here)s/node_modules/ol
+    ../../node_modules/ngeo %(here)s/node_modules/ngeo
+
+# used for the "node_modules" and "closure" static views
+node_modules_path = %(here)s/node_modules/
+closure_library_path = __CLOSURE_LIBRARY_PATH__
 
 ###
 # wsgi server configuration
