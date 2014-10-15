@@ -3,7 +3,7 @@ pyramid_closure
 Install:
 
 ```
-$ git clone https://github.com/elemoine/pyramid_closure.git
+$ git clone https://github.com/camptocamp/pyramid_closure.git
 $ cd pyramid_closure
 $ make install
 ```
