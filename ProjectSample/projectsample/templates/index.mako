@@ -13,7 +13,7 @@
 % endif
   </head>
   <body ng-controller="MainController">
-    <div id="map" go-map></div>
+    <div id="map" ngeo-map></div>
 % if debug:
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>
     <script src="/closure/closure/goog/base.js"></script>
