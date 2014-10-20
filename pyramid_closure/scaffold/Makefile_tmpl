@@ -26,7 +26,7 @@ help:
 check: flake8 lint build
 
 .PHONY: build
-build: {{package}}/static/build/build.js {{package}}/static/build/build.css {{package}}/static/build/build-debug.css
+build: {{package}}/static/build/build.js {{package}}/static/build/build.css {{package}}/static/build/build.min.css
 
 .PHONY: clean
 clean:
@@ -65,11 +65,11 @@ serve: install build development.ini
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
-{{package}}/static/build/build.css: $(LESS_FILES) .build/node_modules.timestamp
+{{package}}/static/build/build.min.css: $(LESS_FILES) .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	./node_modules/.bin/lessc --clean-css less/{{package}}.less > $@
 
-{{package}}/static/build/build-debug.css: $(LESS_FILES) .build/node_modules.timestamp
+{{package}}/static/build/build.css: $(LESS_FILES) .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	./node_modules/.bin/lessc less/{{package}}.less > $@
 

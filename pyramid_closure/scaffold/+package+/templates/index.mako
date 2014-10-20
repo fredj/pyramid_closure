@@ -7,9 +7,9 @@
           content="initial-scale=1.0, user-scalable=no, width=device-width">
     <meta name="apple-mobile-web-app-capable" content="yes">
 % if debug:
-    <link rel="stylesheet" href="/static/build/build-debug.css" type="text/css">
-% else:
     <link rel="stylesheet" href="/static/build/build.css" type="text/css">
+% else:
+    <link rel="stylesheet" href="/static/build/build.min.css" type="text/css">
 % endif
   </head>
   <body ng-controller="MainController">
