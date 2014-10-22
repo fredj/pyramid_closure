@@ -31,8 +31,7 @@ build: {{package}}/static/build/build.js {{package}}/static/build/build.css {{pa
 clean:
 	rm -f .build/node_modules.timestamp
 	rm -f .build/dev-requirements.timestamp
-	rm -f development.ini
-	rm -f production.ini
+	rm -f common.ini
 	rm -rf {{package}}/static/build
 
 .PHONY: cleanall
@@ -54,7 +53,7 @@ lint: .build/venv/bin/gjslint .build/node_modules.timestamp .build/gjslint.times
 install-dev-egg: $(SITE_PACKAGES)/{{project}}.egg-link
 
 .PHONY: serve
-serve: install build development.ini
+serve: install build common.ini
 	.build/venv/bin/pserve --reload development.ini
 
 {{package}}/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
@@ -110,8 +109,5 @@ serve: install build development.ini
 $(SITE PACKAGES)/{{project}}.egg-link: .build/venv setup.py
 	.build/venv/bin/pip install -r requirements.txt
 
-development.ini: development.ini.in
-	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|' $< > $@
-
-production.ini: production.ini.in
+common.ini: common.ini.in
 	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|' $< > $@

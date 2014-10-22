@@ -4,7 +4,7 @@
 ###
 
 [app:main]
-use = egg:ProjectSample
+use = config:common.ini
 
 pyramid.reload_templates = false
 pyramid.debug_authorization = false
@@ -14,17 +14,6 @@ pyramid.default_locale_name = en
 pyramid.includes =
     pyramid_closure
     pyramid_mako
-
-# pyramid_closure configuration
-pyramid_closure.roots =
-    __CLOSURE_LIBRARY_PATH__/closure/goog
-pyramid_closure.roots_with_prefix =
-    ../../node_modules/openlayers %(here)s/node_modules/openlayers
-    ../../node_modules/ngeo %(here)s/node_modules/ngeo
-
-# used for the "node_modules" and "closure" static views
-node_modules_path = %(here)s/node_modules/
-closure_library_path = __CLOSURE_LIBRARY_PATH__
 
 ###
 # wsgi server configuration
@@ -41,7 +30,7 @@ port = 6543
 ###
 
 [loggers]
-keys = root, projectsample
+keys = root, {{package_logger}}
 
 [handlers]
 keys = console
@@ -53,10 +42,10 @@ keys = generic
 level = WARN
 handlers = console
 
-[logger_projectsample]
+[logger_{{package_logger}}]
 level = WARN
 handlers =
-qualname = projectsample
+qualname = {{package}}
 
 [handler_console]
 class = StreamHandler
