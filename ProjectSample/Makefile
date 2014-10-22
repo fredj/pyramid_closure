@@ -5,6 +5,7 @@ CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE
 OL_JS_FILES = $(shell find node_modules/openlayers/src/ol -type f -name '*.js' 2> /dev/null)
 NGEO_JS_FILES = $(shell find node_modules/ngeo/src -type f -name '*.js' 2> /dev/null)
 APP_JS_FILES = $(shell find projectsample/static/js -type f -name '*.js')
+APP_HTML_FILES = $(shell find projectsample/templates -type f -name '*.html')
 LESS_FILES = $(shell find less -type f -name '*.less')
 
 .PHONY: help
@@ -16,6 +17,7 @@ help:
 	@echo "- check              Perform a number of checks on the code"
 	@echo "- clean              Remove generated files"
 	@echo "- cleanall           Remove all the build artefacts"
+	@echo "- compile-catalog    Compile the translation catalog"
 	@echo "- flake8             Run flake8 checker on the Python code"
 	@echo "- install            Install and build the project"
 	@echo "- lint               Check the JavaScript code with linters"
@@ -33,12 +35,16 @@ clean:
 	rm -f .build/node_modules.timestamp
 	rm -f .build/dev-requirements.timestamp
 	rm -f common.ini
+	rm -f projectsample/locale/*.pot
 	rm -rf projectsample/static/build
 
 .PHONY: cleanall
 cleanall: clean
 	rm -rf .build
 	rm -rf node_modules
+
+.PHONY: compile-catalog
+compile-catalog: projectsample/static/build/locale/fr/projectsample.json
 
 .PHONY: flake8
 flake8: .build/venv/bin/flake8
@@ -60,6 +66,12 @@ serve: install build common.ini
 projectsample/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
+projectsample/locale/projectsample-client.pot: $(APP_HTML_FILES)
+	node tasks/extract-messages.js $^ > $@
+
+projectsample/locale/fr/LC_MESSAGES/projectsample-client.po: projectsample/locale/projectsample-client.pot
+	cd projectsample/locale && msgmerge --update fr/LC_MESSAGES/projectsample-client.po projectsample-client.pot
+
 projectsample/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
@@ -71,6 +83,10 @@ projectsample/static/build/build.min.css: $(LESS_FILES) .build/node_modules.time
 projectsample/static/build/build.css: $(LESS_FILES) .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	./node_modules/.bin/lessc less/projectsample.less > $@
+
+projectsample/static/build/locale/fr/projectsample.json: projectsample/locale/fr/LC_MESSAGES/projectsample-client.po
+	mkdir -p $(dir $@)
+	node tasks/compile-catalog $< > $@
 
 .build/externs/angular-1.3.js:
 	mkdir -p $(dir $@)

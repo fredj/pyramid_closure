@@ -8,6 +8,8 @@
     "async": "~0.2.10"
   },
   "devDependencies": {
+    "angular-gettext": "1.1.3",
+    "angular-gettext-tools": "1.0.4",
     "openlayers": "openlayers/ol3#master",
     "ngeo": "camptocamp/ngeo#master",
     "less": "~1.7.5",
