@@ -1,7 +1,6 @@
 /.build
 /{{package}}/static/build
 /node_modules
-/development.ini
-/production.ini
+/common.ini
 *.pyc
 *.egg-info

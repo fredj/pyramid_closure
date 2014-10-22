@@ -4,7 +4,7 @@
 ###
 
 [app:main]
-use = egg:{{project}}
+use = config:common.ini
 
 pyramid.reload_templates = true
 pyramid.debug_authorization = false
@@ -15,17 +15,6 @@ pyramid.includes =
     pyramid_debugtoolbar
     pyramid_closure
     pyramid_mako
-
-# pyramid_closure configuration
-pyramid_closure.roots =
-    __CLOSURE_LIBRARY_PATH__/closure/goog
-pyramid_closure.roots_with_prefix =
-    ../../node_modules/openlayers %(here)s/node_modules/openlayers
-    ../../node_modules/ngeo %(here)s/node_modules/ngeo
-
-# used for the "node_modules" and "closure" static views
-node_modules_path = %(here)s/node_modules/
-closure_library_path = __CLOSURE_LIBRARY_PATH__
 
 # By default, the toolbar only appears for clients from IP addresses
 # '127.0.0.1' and '::1'.
