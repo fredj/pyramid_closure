@@ -5,6 +5,7 @@ CLOSURE_COMPILER_PATH = $(shell node -e 'process.stdout.write(require("$(CLOSURE
 OL_JS_FILES = $(shell find node_modules/openlayers/src/ol -type f -name '*.js' 2> /dev/null)
 NGEO_JS_FILES = $(shell find node_modules/ngeo/src -type f -name '*.js' 2> /dev/null)
 APP_JS_FILES = $(shell find projectsample/static/js -type f -name '*.js')
+LESS_FILES = $(shell find less -type f -name '*.less')
 
 .PHONY: help
 help:
@@ -25,7 +26,7 @@ help:
 check: flake8 lint build
 
 .PHONY: build
-build: projectsample/static/build/build.js projectsample/static/build/build.css projectsample/static/build/build-debug.css
+build: projectsample/static/build/build.js projectsample/static/build/build.css projectsample/static/build/build.min.css
 
 .PHONY: clean
 clean:
@@ -63,13 +64,13 @@ projectsample/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) 
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
-projectsample/static/build/build.css: less/projectsample.less .build/node_modules.timestamp
+projectsample/static/build/build.min.css: $(LESS_FILES) .build/node_modules.timestamp
 	mkdir -p $(dir $@)
-	./node_modules/.bin/lessc --clean-css $< > $@
+	./node_modules/.bin/lessc --clean-css less/projectsample.less > $@
 
-projectsample/static/build/build-debug.css: less/projectsample.less .build/node_modules.timestamp
+projectsample/static/build/build.css: $(LESS_FILES) .build/node_modules.timestamp
 	mkdir -p $(dir $@)
-	./node_modules/.bin/lessc $< > $@
+	./node_modules/.bin/lessc less/projectsample.less > $@
 
 .build/externs/angular-1.3.js:
 	mkdir -p $(dir $@)
