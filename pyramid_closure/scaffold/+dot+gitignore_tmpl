@@ -4,3 +4,4 @@
 /common.ini
 *.pyc
 *.egg-info
+*.po~
