@@ -9,8 +9,8 @@ goog.require('ol.source.OSM');
 (function() {
   var module = angular.module('app', ['ngeo', 'gettext']);
 
-  module.controller('MainController',
-      ['$scope', 'gettextCatalog', 'langUrlTemplate',
+  module.controller('MainController', ['$scope', 'gettextCatalog',
+    'langUrlTemplate',
     /**
      * @param {angular.Scope} $scope Scope.
      * @param {angularGettext.Catalog} gettextCatalog Gettext catalog.
