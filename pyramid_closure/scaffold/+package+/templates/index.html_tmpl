@@ -29,7 +29,7 @@
     <script>
       (function() {
          var module = angular.module('app');
-         module.constant('langUrlTemplate', '${request.static_path('{{package}}:static/build/locale/__lang__/{{package}}.json')}');
+         module.constant('langUrlTemplate', '/static/build/locale/__lang__/{{package}}.json');
        })();
     </script>
   </body>
