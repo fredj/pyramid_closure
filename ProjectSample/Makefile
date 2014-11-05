@@ -72,7 +72,7 @@ projectsample/locale/projectsample-client.pot: $(APP_HTML_FILES)
 projectsample/locale/fr/LC_MESSAGES/projectsample-client.po: projectsample/locale/projectsample-client.pot
 	cd projectsample/locale && msgmerge --update fr/LC_MESSAGES/projectsample-client.po projectsample-client.pot
 
-projectsample/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/node_modules.timestamp
+projectsample/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/externs/angular-1.3-http-promise.js .build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	node tasks/build.js $< $@
 
@@ -96,6 +96,11 @@ projectsample/static/build/locale/fr/projectsample.json: projectsample/locale/fr
 .build/externs/angular-1.3-q.js:
 	mkdir -p $(dir $@)
 	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3-q.js
+	touch $@
+
+.build/externs/angular-1.3-http-promise.js:
+	mkdir -p $(dir $@)
+	wget -O $@ https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/angular-1.3-http-promise.js
 	touch $@
 
 .build/node_modules.timestamp: package.json
