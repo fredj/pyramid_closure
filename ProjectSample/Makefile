@@ -28,7 +28,7 @@ help:
 check: flake8 lint build
 
 .PHONY: build
-build: projectsample/static/build/build.js projectsample/static/build/build.css projectsample/static/build/build.min.css
+build: projectsample/static/build/build.js projectsample/static/build/build.css projectsample/static/build/build.min.css compile-catalog
 
 .PHONY: clean
 clean:
