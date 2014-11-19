@@ -11,9 +11,9 @@ pyramid.default_locale_name = en
 pyramid_closure.roots =
     __CLOSURE_LIBRARY_PATH__/closure/goog
 pyramid_closure.roots_with_prefix =
-    ../../../static/js %(here)s/projectsample/static/js
-    ../../../node_modules/openlayers %(here)s/node_modules/openlayers
-    ../../../node_modules/ngeo %(here)s/node_modules/ngeo
+    ../../../../../../../../../static/js %(here)s/projectsample/static/js
+    ../../../../../../../../../node_modules/openlayers %(here)s/node_modules/openlayers
+    ../../../../../../../../../node_modules/ngeo %(here)s/node_modules/ngeo
 
 # used for the "node_modules" and "closure" static views
 node_modules_path = %(here)s/node_modules/
