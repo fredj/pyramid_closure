@@ -13,21 +13,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 % if debug:
     <link rel="stylesheet" href="${request.static_url('{{package}}:static/build/build.css')}" type="text/css">
+    <script src="${request.static_url('%s/angular/angular.js' % node_modules_path)}"></script>
 % else:
     <link rel="stylesheet" href="${request.static_url('{{package}}:static/build/build.min.css')}" type="text/css">
+    <script src="${request.static_url('%s/angular/angular.min.js' % node_modules_path)}"></script>
 % endif
   </head>
   <body>
     <h1 translate>Hello!</h1>
     <div id="map" ngeo-map></div>
 % if debug:
-    <script src="${request.static_url('%s/angular/angular.js' % node_modules_path)}"></script>
     <script src="${request.static_url('%s/angular-gettext/dist/angular-gettext.js' % node_modules_path)}"></script>
     <script src="${request.static_url('%s/closure/goog/base.js' % closure_library_path)}"></script>
     <script src="${request.route_url('deps.js')}"></script>
     <script src="${request.static_url('{{package}}:static/js/main.js')}"></script>
 % else:
-    <script src="${request.static_url('%s/angular/angular.min.js' % node_modules_path)}"></script>
     <script src="${request.static_url('%s/angular-gettext/dist/angular-gettext.min.js' % node_modules_path)}"></script>
     <script src="${request.static_url('{{package}}:static/build/build.js')}"></script>
 % endif
