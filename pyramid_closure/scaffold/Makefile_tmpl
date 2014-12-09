@@ -14,14 +14,15 @@ help:
 	@echo
 	@echo "Main targets:"
 	@echo
-	@echo "- check              Perform a number of checks on the code"
-	@echo "- clean              Remove generated files"
-	@echo "- cleanall           Remove all the build artefacts"
-	@echo "- compile-catalog    Compile the translation catalog"
-	@echo "- flake8             Run flake8 checker on the Python code"
-	@echo "- install            Install and build the project"
-	@echo "- lint               Check the JavaScript code with linters"
-	@echo "- serve              Run the development server (pserve)"
+	@echo "- check               Perform a number of checks on the code"
+	@echo "- clean               Remove generated files"
+	@echo "- cleanall            Remove all the build artefacts"
+	@echo "- compile-catalog     Compile the translation catalog"
+	@echo "- flake8              Run flake8 checker on the Python code"
+	@echo "- install             Install and build the project"
+	@echo "- lint                Check the JavaScript code with linters"
+	@echo "- serve               Run the development server (pserve)"
+	@echo "- update-node-modules Update node modules (using --force)"
 	@echo
 
 .PHONY: check
@@ -62,6 +63,10 @@ install-dev-egg: $(SITE_PACKAGES)/{{project}}.egg-link
 .PHONY: serve
 serve: install build common.ini
 	.build/venv/bin/pserve --reload development.ini
+
+.PHONY: update-node-modules
+update-node-modules:
+	npm install --force
 
 {{package}}/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
