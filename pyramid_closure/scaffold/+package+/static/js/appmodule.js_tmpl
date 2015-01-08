@@ -5,6 +5,7 @@ goog.provide('app');
 
 goog.require('ngeo');
 
+
 /**
  * @const
  * @type {!angular.Module}
