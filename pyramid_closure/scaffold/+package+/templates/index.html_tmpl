@@ -34,7 +34,7 @@
     <script>
       (function() {
          var module = angular.module('app');
-         module.constant('langUrlTemplate', '${request.static_url('{{package}}:static/build/locale/__lang__/projectsample.json')}');
+         module.constant('langUrlTemplate', '${request.static_url('{{package}}:static/build/locale/__lang__/{{package}}.json')}');
        })();
     </script>
   </body>
