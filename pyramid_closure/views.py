@@ -6,23 +6,28 @@ from .closure import depswriter
 
 
 def pairwise(iterable):
-    a = iter(iterable)
+    if isinstance(iterable, dict):
+        return iterable
+
+    a = iter(aslist(iterable))
     return izip(a, a)
 
 
 def depsjs(request):
     path_to_source = {}
 
-    roots = aslist(request.registry.settings.get(
-        'pyramid_closure.roots', []))
-    for root in roots:
-        path_to_source.update(depswriter._GetRelativePathToSourceDict(root))
+    settings = request.registry.settings
+    pyramid_closure = settings.get("pyramid_closure")
 
-    roots_with_prefix = aslist(request.registry.settings.get(
-        'pyramid_closure.roots_with_prefix', []))
-    for prefix, root in pairwise(roots_with_prefix):
-        path_to_source.update(
-            depswriter._GetRelativePathToSourceDict(root, prefix=prefix))
+    roots = pyramid_closure.get("roots") if pyramid_closure else settings.get("pyramid_closure.roots")
+    roots = aslist(roots or [])
+
+    roots_with_prefix = (
+        pyramid_closure.get("roots_with_prefix")
+        if pyramid_closure
+        else settings.get("pyramid_closure.roots_with_prefix")
+    )
+    roots_with_prefix = pairwise(roots_with_prefix)
 
     request.response.content_type = 'text/javascript'
 
