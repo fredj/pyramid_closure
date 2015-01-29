@@ -19,14 +19,13 @@ def depsjs(request):
     settings = request.registry.settings
     pyramid_closure = settings.get("pyramid_closure")
 
-    roots = pyramid_closure.get("roots") if pyramid_closure else settings.get("pyramid_closure.roots")
+    roots = pyramid_closure.get("roots") if pyramid_closure else \
+        settings.get("pyramid_closure.roots")
     roots = aslist(roots or [])
 
-    roots_with_prefix = (
-        pyramid_closure.get("roots_with_prefix")
-        if pyramid_closure
-        else settings.get("pyramid_closure.roots_with_prefix")
-    )
+    roots_with_prefix = pyramid_closure.get("roots_with_prefix") if \
+        pyramid_closure else \
+        settings.get("pyramid_closure.roots_with_prefix")
     roots_with_prefix = pairwise(roots_with_prefix)
 
     request.response.content_type = 'text/javascript'
