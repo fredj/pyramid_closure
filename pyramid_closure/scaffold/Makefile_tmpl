@@ -133,7 +133,7 @@ update-node-modules:
 	mkdir -p $(dir $@)
 	virtualenv --no-site-packages $@
 
-$(SITE PACKAGES)/{{project}}.egg-link: .build/venv setup.py
+$(SITE_PACKAGES)/{{project}}.egg-link: .build/venv setup.py
 	.build/venv/bin/pip install -r requirements.txt
 
 common.ini: common.ini.in

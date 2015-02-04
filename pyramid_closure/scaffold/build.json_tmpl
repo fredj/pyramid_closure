@@ -13,6 +13,7 @@
       "node_modules/openlayers/externs/closure-compiler.js",
       "node_modules/openlayers/externs/geojson.js",
       "node_modules/openlayers/externs/proj4js.js",
+      "node_modules/openlayers/externs/jquery-1.9.js",
       "node_modules/openlayers/externs/tilejson.js",
       "node_modules/openlayers/externs/topojson.js",
       "node_modules/openlayers/externs/vbarray.js",
