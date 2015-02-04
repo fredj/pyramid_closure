@@ -133,7 +133,7 @@ projectsample/static/build/locale/fr/projectsample.json: projectsample/locale/fr
 	mkdir -p $(dir $@)
 	virtualenv --no-site-packages $@
 
-$(SITE PACKAGES)/ProjectSample.egg-link: .build/venv setup.py
+$(SITE_PACKAGES)/ProjectSample.egg-link: .build/venv setup.py
 	.build/venv/bin/pip install -r requirements.txt
 
 common.ini: common.ini.in
