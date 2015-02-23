@@ -7,7 +7,7 @@ from .closure import depswriter
 
 def pairwise(iterable):
     if isinstance(iterable, dict):
-        return iterable
+        return iterable.iteritems()
     a = iter(aslist(iterable))
     return izip(a, a)
 
