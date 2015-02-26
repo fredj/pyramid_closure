@@ -137,4 +137,4 @@ $(SITE_PACKAGES)/{{project}}.egg-link: .build/venv setup.py
 	.build/venv/bin/pip install -r requirements.txt
 
 common.ini: common.ini.in
-	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|' $< > $@
+	sed 's|__CLOSURE_LIBRARY_PATH__|$(CLOSURE_LIBRARY_PATH)|g' $< > $@
