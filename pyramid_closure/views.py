@@ -39,7 +39,7 @@ def depsjs(request):
     if roots_with_prefix is None:
         roots_with_prefix = []
     elif isinstance(roots_with_prefix, basestring):
-        roots_with_prefix = aslist(roots_with_prefix)
+        roots_with_prefix = [aslist(roots_with_prefix)]
 
     for prefix, root in pairwise(roots_with_prefix):
         path_to_source.update(
