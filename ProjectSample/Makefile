@@ -72,14 +72,14 @@ projectsample/closure/%.py: $(CLOSURE_LIBRARY_PATH)/closure/bin/build/%.py
 	cp $< $@
 
 projectsample/locale/projectsample-client.pot: $(APP_HTML_FILES)
-	node tasks/extract-messages.js $^ > $@
+	node tools/extract-messages.js $^ > $@
 
 projectsample/locale/fr/LC_MESSAGES/projectsample-client.po: projectsample/locale/projectsample-client.pot
 	cd projectsample/locale && msgmerge --update fr/LC_MESSAGES/projectsample-client.po projectsample-client.pot
 
 projectsample/static/build/build.js: build.json $(OL_JS_FILES) $(NGEO_JS_FILES) $(APP_JS_FILES) .build/externs/angular-1.3.js .build/externs/angular-1.3-q.js .build/externs/angular-1.3-http-promise.js .build/node_modules.timestamp
 	mkdir -p $(dir $@)
-	node tasks/build.js $< $@
+	./node_modules/openlayers/node_modules/.bin/closure-util build $< $@
 
 projectsample/static/build/build.min.css: $(LESS_FILES) .build/node_modules.timestamp
 	mkdir -p $(dir $@)
@@ -91,7 +91,7 @@ projectsample/static/build/build.css: $(LESS_FILES) .build/node_modules.timestam
 
 projectsample/static/build/locale/fr/projectsample.json: projectsample/locale/fr/LC_MESSAGES/projectsample-client.po
 	mkdir -p $(dir $@)
-	node tasks/compile-catalog $< > $@
+	node tools/compile-catalog $< > $@
 
 .build/externs/angular-1.3.js:
 	mkdir -p $(dir $@)

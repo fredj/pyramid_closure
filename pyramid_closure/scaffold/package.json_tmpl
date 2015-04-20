@@ -15,12 +15,8 @@
     "ngeo": "camptocamp/ngeo#master",
     "less": "~2.0.0",
     "less-plugin-clean-css": "~1.1.0",
-    "fs-extra": "~0.8.1",
-    "jsdoc": "~3.3.0-alpha7",
     "jshint": "~2.5.1",
     "nomnom": "~1.6.2",
-    "phantomjs": "~1.9.7-5",
-    "temp": "~0.7.0",
-    "walk": "~2.3.3"
+    "phantomjs": "~1.9.7-5"
   }
 }
