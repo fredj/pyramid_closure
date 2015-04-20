@@ -1,5 +1,4 @@
 {
-  "exports": [],
   "src": [
     "node_modules/openlayers/src/**/*.js",
     "node_modules/openlayers/build/ol.ext/**/*.js",
@@ -11,12 +10,12 @@
     "externs": [
       "node_modules/openlayers/externs/bingmaps.js",
       "node_modules/openlayers/externs/closure-compiler.js",
+      "node_modules/openlayers/externs/esrijson.js",
       "node_modules/openlayers/externs/geojson.js",
       "node_modules/openlayers/externs/proj4js.js",
       "node_modules/openlayers/externs/jquery-1.9.js",
       "node_modules/openlayers/externs/tilejson.js",
       "node_modules/openlayers/externs/topojson.js",
-      "node_modules/openlayers/externs/vbarray.js",
       "node_modules/ngeo/externs/angular-gettext.js",
       "node_modules/ngeo/externs/angular-local-storage.js",
       "node_modules/ngeo/externs/closure-compiler.js",
