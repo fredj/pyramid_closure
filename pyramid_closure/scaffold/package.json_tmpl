@@ -16,7 +16,6 @@
     "less": "~2.0.0",
     "less-plugin-clean-css": "~1.1.0",
     "jshint": "~2.5.1",
-    "nomnom": "~1.6.2",
-    "phantomjs": "~1.9.7-5"
+    "nomnom": "~1.6.2"
   }
 }
